@@ -44,7 +44,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
-                <executions>
+            <!-- <executions> enlevé car ça ne compilait pas avec ça
                     <execution>
                         <id>unpack-dependencies</id>
                         
@@ -78,7 +78,7 @@
                             <commandlineArgs>${runfx.args}</commandlineArgs>
                         </configuration>
                     </execution>
-                </executions>  
+                </executions> -->     
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
