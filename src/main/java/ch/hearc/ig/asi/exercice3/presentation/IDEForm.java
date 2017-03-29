@@ -1,8 +1,6 @@
 package ch.hearc.ig.asi.exercice3.presentation;
 
 import ch.hearc.ig.asi.exercice3.services.Services;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -10,7 +8,6 @@ import org.apache.logging.log4j.Logger;
  */
 public class IDEForm extends javax.swing.JFrame {
 
-    private static final Logger logger = LogManager.getLogger();
     /**
      * Creates new form IDEForm
      */
@@ -126,7 +123,6 @@ public class IDEForm extends javax.swing.JFrame {
      */
     private void ideButtonCheckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ideButtonCheckMouseClicked
         ideInformationOutput.setText(""); // Réinitialiser l'OutPut représentant les informations de l'entreprise
-        logger.info("Asking Check for IDE : " + ideNumberInput.getText());
         if (Services.checkIDE(ideNumberInput.getText().trim())) {
             ideValidationOutput.setText("OK");
             ideInformationOutput.setText(Services.getIDEDetails(ideNumberInput.getText().trim()));
