@@ -1,5 +1,7 @@
 package ch.hearc.ig.asi.exercice3.presentation;
 
+import ch.admin.uid.xmlns.uid_wse.ArrayOfOrganisationType;
+import ch.ech.xmlns.ech_0098_f._3.OrganisationType;
 import ch.hearc.ig.asi.exercice3.services.Services;
 
 /**
@@ -115,6 +117,7 @@ public class IDEForm extends javax.swing.JFrame {
     private void ideButtonCheckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ideButtonCheckMouseClicked
         if(Services.checkIDE(ideNumberInput.getText())){
             ideValidationOutput.setText("OK");
+            ideInformationOutput.setText(Services.getIDEDetails(ideNumberInput.getText()));
         } else {
             ideValidationOutput.setText("NOK");
         }
