@@ -1,6 +1,8 @@
 package ch.hearc.ig.asi.exercice3.presentation;
 
 import ch.hearc.ig.asi.exercice3.services.Services;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -8,12 +10,12 @@ import ch.hearc.ig.asi.exercice3.services.Services;
  */
 public class IDEForm extends javax.swing.JFrame {
 
+    private static final Logger logger = LogManager.getLogger();
     /**
      * Creates new form IDEForm
      */
     public IDEForm() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,6 +39,11 @@ public class IDEForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Architecture du SI - SOAP WebServices - Exercice 3");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         ideNumberLabel.setText("Numéro IDE :");
 
@@ -112,17 +119,29 @@ public class IDEForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Méthode appellé après avoir pressé le bouton Go qui va afficher les informations de l'IDE si il est valide
+     * Méthode appellé après avoir pressé le bouton Go qui va afficher les
+     * informations de l'IDE si il est valide
+     *
      * @param evt l'événement du clique avec la souris
      */
     private void ideButtonCheckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ideButtonCheckMouseClicked
-        if(Services.checkIDE(ideNumberInput.getText())){
+        ideInformationOutput.setText(""); // Réinitialiser l'OutPut représentant les informations de l'entreprise
+        logger.info("Asking Check for IDE : " + ideNumberInput.getText());
+        if (Services.checkIDE(ideNumberInput.getText().trim())) {
             ideValidationOutput.setText("OK");
-            ideInformationOutput.setText(Services.getIDEDetails(ideNumberInput.getText()));
+            ideInformationOutput.setText(Services.getIDEDetails(ideNumberInput.getText().trim()));
         } else {
             ideValidationOutput.setText("NOK");
         }
     }//GEN-LAST:event_ideButtonCheckMouseClicked
+
+    /**
+     * Méthode appellée après la construction de l'objet afin de centrer l'application sur l'écran
+     * @param evt l'événement représentant l'ouverture de la fenêtre
+     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setLocationRelativeTo(null); // Centrer l'application sur l'écran
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
