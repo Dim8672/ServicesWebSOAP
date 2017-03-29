@@ -6,8 +6,6 @@ import ch.hearc.ig.asi.exercice3.utilitaire.Utilitaire;
 import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.tempuri.IPublicServicesGetByUIDBusinessFaultFaultFaultMessage;
 import org.tempuri.IPublicServicesGetByUIDInfrastructureFaultFaultFaultMessage;
 import org.tempuri.IPublicServicesGetByUIDSecurityFaultFaultFaultMessage;

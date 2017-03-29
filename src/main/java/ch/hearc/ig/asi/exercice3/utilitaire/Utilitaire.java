@@ -24,11 +24,14 @@ public class Utilitaire {
         StringBuilder result = new StringBuilder();
         OrganisationType org = array.getOrganisationType().get(0);
         result.append(org.getOrganisation().getOrganisationIdentification().getOrganisationName()); //NomOrganisation
-        result.append("\n");
-        result.append(org.getOrganisation().getContact().getAddress().get(0).getPostalAddress().getAddressInformation().getStreet()); //Adresse
-        result.append("\n");
-        result.append(org.getOrganisationMunicipality().getMunicipalityId()); //CodePostal
-        result.append(" ");
+        result.append(System.lineSeparator());
+        result.append(org.getOrganisation().getContact().getAddress().get(0).getPostalAddress().getAddressInformation().getStreet()).append(" "); //Adresse
+        
+        if(org.getOrganisation().getContact().getAddress().get(0).getPostalAddress().getAddressInformation().getHouseNumber() != null){ // Ajout du numéro du bâtiment si il existe
+           result.append(org.getOrganisation().getContact().getAddress().get(0).getPostalAddress().getAddressInformation().getHouseNumber()); 
+        } 
+        result.append(System.lineSeparator());
+        result.append(org.getOrganisation().getContact().getAddress().get(0).getPostalAddress().getAddressInformation().getForeignZipCodeOrSwissZipCodeOrSwissZipCodeAddOn().get(0).getValue().toString()).append(" "); //CodePostal
         result.append(org.getOrganisationMunicipality().getMunicipalityName()); //NomMunicipalite
         
         return result.toString();
