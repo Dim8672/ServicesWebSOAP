@@ -1,7 +1,5 @@
 package ch.hearc.ig.asi.exercice3.presentation;
 
-import ch.admin.uid.xmlns.uid_wse.ArrayOfOrganisationType;
-import ch.ech.xmlns.ech_0098_f._3.OrganisationType;
 import ch.hearc.ig.asi.exercice3.services.Services;
 
 /**
